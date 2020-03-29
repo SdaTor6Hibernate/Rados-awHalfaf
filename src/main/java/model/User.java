@@ -1,0 +1,33 @@
+package model;
+
+
+import lombok.Data;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Data
+public class User{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "USR_ID")
+    private int userID;
+    @Column(name = "USR_FIRST_NAME")
+    private String firstName;
+    @Column(name = "USR_LAST_NAME")
+    private String lastName;
+    @Column(name = "USR_PASSWORD")
+    private String password;
+    @Column(name = "USR_EMAIL")
+    private String email;
+    @Column(name = "USR_BIRTH_DATE")
+    private LocalDateTime birthDate;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "USR_AD_ID", referencedColumnName = "ADD_ID")
+    private Address address;
+
+
+
+
+}
