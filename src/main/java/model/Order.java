@@ -6,6 +6,8 @@ import lombok.Data;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -24,6 +26,9 @@ public class Order{
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ORD_USR_ID", referencedColumnName = "USR_ID")
     private User user;
+
+    @ManyToMany(mappedBy = "orders")
+    Set<Product> products = new HashSet<>();
 
 
 }
